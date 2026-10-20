@@ -1,0 +1,238 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #151922;
+    color: #eeeeee;
+}
+
+.navbar {
+    background-color: #202633;
+    padding: 12px 0;
+}
+
+.logo {
+    color: rgb(243, 25, 25);
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #ffffff;
+}
+
+.halaman-utama {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.bagian-judul {
+    margin-bottom: 25px;
+}
+
+.bagian-judul h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.teks-keterangan {
+    color: #aaaaaa;
+}
+
+.nim {
+    font-size: 14px;
+    color: #64a5ff;
+}
+
+.bagian-statistik {
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.kotak-statistik {
+    background-color: #202633;
+    color: white;
+    border: 1px solid #343c4b;
+    padding: 18px;
+}
+
+.kotak-statistik h5 {
+    font-size: 16px;
+    color: #cccccc;
+}
+
+.kotak-statistik h2 {
+    margin-top: 10px;
+    font-size: 28px;
+}
+
+.form-barang,
+.bagian-tabel {
+    background-color: #202633;
+    color: white;
+    border: 1px solid #343c4b;
+    border-radius: 8px;
+    padding: 22px;
+}
+
+.form-barang {
+    margin-bottom: 25px;
+}
+
+.judul-bagian {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.input-barang {
+    margin-bottom: 15px;
+}
+
+.input-barang label {
+    margin-bottom: 7px;
+}
+
+.form-control,
+.form-select {
+    background-color: #151922;
+    color: white;
+    border: 1px solid #454e60;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: #151922;
+    color: white;
+    border-color: #64a5ff;
+    box-shadow: none;
+}
+
+.form-select option {
+    background-color: #202633;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #3478db;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #2864bb;
+}
+
+.tabel-barang {
+    color: white;
+    margin-bottom: 0;
+}
+
+.tabel-barang th {
+    background-color: #303949;
+    color: white;
+    white-space: nowrap;
+}
+
+.tabel-barang td {
+    background-color: #202633;
+    color: #eeeeee;
+    vertical-align: middle;
+}
+
+.tabel-barang tbody tr:hover td {
+    background-color: #2a3343;
+}
+
+.pesan-kosong {
+    text-align: center;
+}
+
+.footer-halaman {
+    background-color: #202633;
+    color: #aaaaaa;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.footer-halaman p {
+    margin: 0;
+}
+
+body[data-theme="light"] {
+    background-color: #f1f3f6;
+    color: #222222;
+}
+
+body[data-theme="light"] .navbar,
+body[data-theme="light"] .footer-halaman {
+    background-color: #e0e4eb;
+    color: #333333;
+}
+
+body[data-theme="light"] .logo {
+    color: #222222;
+}
+
+body[data-theme="light"] .logo span {
+    color: rgb(243, 25, 25);
+}
+
+body[data-theme="light"] .kotak-statistik,
+body[data-theme="light"] .form-barang,
+body[data-theme="light"] .bagian-tabel {
+    background-color: white;
+    color: #222222;
+    border-color: #dddddd;
+}
+
+body[data-theme="light"] .kotak-statistik h5 {
+    color: #555555;
+}
+
+body[data-theme="light"] .form-control,
+body[data-theme="light"] .form-select {
+    background-color: white;
+    color: #222222;
+    border-color: #cccccc;
+}
+
+body[data-theme="light"] .form-select option {
+    background-color: white;
+    color: #222222;
+}
+
+body[data-theme="light"] .tabel-barang th {
+    background-color: #e0e4eb;
+    color: #222222;
+}
+
+body[data-theme="light"] .tabel-barang td {
+    background-color: white;
+    color: #222222;
+}
+
+body[data-theme="light"] .tabel-barang tbody tr:hover td {
+    background-color: #f1f3f6;
+}
+
+body[data-theme="light"] .teks-keterangan {
+    color: #666666;
+}
+
+body[data-theme="light"] .footer-halaman {
+    color: #555555;
+}
+
+@media (max-width: 576px) {
+    .bagian-judul h1 {
+        font-size: 24px;
+    }
+
+    .form-barang,
+    .bagian-tabel {
+        padding: 15px;
+    }
+
+    .bagian-statistik {
+        gap: 10px;
+    }
+}
