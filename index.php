@@ -7,10 +7,11 @@ $jenisPesan = "";
 if (isset($_POST["simpan"])) {
     $nama_barang = trim($_POST["nama_barang"]);
     $kategori = trim($_POST["kategori"]);
+    $satuan = trim($_POST["satuan"]);
     $jumlah_stok = $_POST["jumlah_stok"];
     $harga = $_POST["harga"];
 
-    if ($nama_barang == "" || $kategori == "" || $jumlah_stok == "" || $harga == "") {
+    if ($nama_barang == "" || $kategori == "" || $satuan == "" || $jumlah_stok == "" || $harga == "") {
         $pesan = "Semua data harus diisi!";
         $jenisPesan = "danger";
     } elseif (!is_numeric($jumlah_stok) || !is_numeric($harga) || $jumlah_stok < 0 || $harga < 0) {
@@ -21,11 +22,11 @@ if (isset($_POST["simpan"])) {
         $harga = (int) $harga;
 
         $query = $conn->prepare(
-            "INSERT INTO barang (nama_barang, kategori, jumlah_stok, harga)
-             VALUES (?, ?, ?, ?)"
+            "INSERT INTO barang (nama_barang, kategori, satuan, jumlah_stok, harga)
+            VALUES (?, ?, ?, ?, ?)"
         );
 
-        $query->bind_param("ssii", $nama_barang, $kategori, $jumlah_stok, $harga);
+        $query->bind_param("sssii", $nama_barang, $kategori, $satuan, $jumlah_stok, $harga);
 
         if ($query->execute()) {
         header("Location: index.php?status=berhasil");
@@ -128,6 +129,21 @@ $queryBarang = $conn->query("SELECT * FROM barang ORDER BY id DESC");
                 </div>
 
                 <div class="input-barang">
+                    <label for="satuan" class="form-label">Satuan Barang</label>
+                    <select class="form-select" id="satuan" name="satuan" required>
+                        <option value="">Pilih satuan</option>
+                        <option value="Pcs">Pcs</option>
+                        <option value="Dus">Dus</option>
+                        <option value="Kg">Kg</option>
+                        <option value="Gram">Gram</option>
+                        <option value="Liter">Liter</option>
+                        <option value="Botol">Botol</option>
+                        <option value="Pack">Pack</option>
+                        <option value="Lusin">Lusin</option>
+                    </select>
+                </div>
+
+                <div class="input-barang">
                     <label for="jumlah_stok" class="form-label">Jumlah Stok</label>
                     <input type="number" class="form-control" id="jumlah_stok"
                            name="jumlah_stok" min="0" required>
@@ -155,14 +171,16 @@ $queryBarang = $conn->query("SELECT * FROM barang ORDER BY id DESC");
                             <th>No</th>
                             <th>Nama Barang</th>
                             <th>Kategori</th>
+                            <th>Satuan</th>
                             <th>Jumlah</th>
                             <th>Harga</th>
+                            <th>Total Harga</th>
                             <th>Status</th>
                             <th>Tanggal</th>
                         </tr>
                     </thead>
 
-                    <tbody>
+                   <tbody>
                         <?php if ($queryBarang->num_rows > 0) { ?>
                             <?php $no = 1; ?>
 
@@ -171,8 +189,13 @@ $queryBarang = $conn->query("SELECT * FROM barang ORDER BY id DESC");
                                     <td><?php echo $no++; ?></td>
                                     <td><?php echo htmlspecialchars($barang["nama_barang"]); ?></td>
                                     <td><?php echo htmlspecialchars($barang["kategori"]); ?></td>
+                                    <td><?php echo htmlspecialchars($barang["satuan"]); ?></td>
                                     <td><?php echo $barang["jumlah_stok"]; ?></td>
                                     <td>Rp<?php echo number_format($barang["harga"], 0, ",", "."); ?></td>
+
+                                    <td>
+                                        Rp<?php echo number_format($barang["jumlah_stok"] * $barang["harga"], 0, ",", "."); ?>
+                                    </td>
 
                                     <td>
                                         <?php if ($barang["jumlah_stok"] < 5) { ?>
@@ -188,7 +211,7 @@ $queryBarang = $conn->query("SELECT * FROM barang ORDER BY id DESC");
 
                         <?php } else { ?>
                             <tr>
-                                <td colspan="7" class="pesan-kosong">
+                                <td colspan="9" class="pesan-kosong">
                                     Belum ada data barang.
                                 </td>
                             </tr>
